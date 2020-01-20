@@ -11,7 +11,7 @@ Scripts used for all lab bio-informatics work.
 4. [Bioconductor](https://www.bioconductor.org) - lots of great resources for bulk sequencing packages.
 
 
-   Needless to say, some proficiency in R is required for using Seurat and the pacakges in Bioconductor. 
+   Needless to say, some proficiency in R is required for using Seurat and the packages in Bioconductor. 
    I would start with some general purpose [R tutorials](https://r4ds.had.co.nz), and quickly transition towards using ggplot2 for [visualizing your data](https://r4ds.had.co.nz/data-visualisation.html#first-steps). 
    I'll make a mini training repo for that stuff too soon, but those links are how I learnt this stuff. 
 
@@ -22,9 +22,9 @@ Scripts used for all lab bio-informatics work.
    I've already done this for the HiesingerLab partition on sherlock. Type in `cellranger` in the terminal to see options. 
    Executable is located in `$PI_HOME/single_cell/cellranger-3.1.0`
 
-2. bcl2fastq installed and configured correctly. This is actually a dependency of cellranger.
+2. bcl2fastq installed and configured correctly. This is a dependency of cellranger's mkfastq step.
 
-   This is already configured and installed on Sherlock. Load the module by typing in `module load bcl2fastq` prior to calling the cellranger commands. 
+   This is already configured and installed on Sherlock. Load the module by typing in `module load bcl2fastq` prior to calling the cellranger mkfastq commands. 
 
 
 ## Scripts in this repo
@@ -38,6 +38,7 @@ For the 'cellranger_count.sh' script in particular, we use the fast SSDs on the 
 There is a 'master_run.sh' script here too that allows for you to run as many cellranger jobs in parallel as you want with a single command, resources permitting.
 Very useful when running large batches of sequencing data, ensuring everything is arranged in the right folders for downstream processing with R. 
 
+For a quick tutorial on how this works, I would refer to Dave Tang's [blog](https://davetang.org/muse/2018/08/09/getting-started-with-cell-ranger/), really well written tutorial for using cellranger.
 Will add R scripts here later.
 
 
