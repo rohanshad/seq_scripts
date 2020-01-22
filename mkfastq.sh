@@ -2,7 +2,7 @@
 
 # Name of your job (keep this stuff as is)
 #SBATCH --job-name=mkfastq
-#SBATCH --partition=willhies
+#SBATCH --partition=owners,willhies
 #SBATCH --mem=20G
 
 # Specify the name of the output file. The %j specifies the job ID (keep this as is)
