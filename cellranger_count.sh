@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #Job Name (change to reflect the case you're running)
-#SBATCH --job-name=3_count
+#SBATCH --job-name=2_count
 
 #Output file (this will store the log file for the job)
-#SBATCH --output=3_count.%j
+#SBATCH --output=2_count.%j
 
 # Send an email to this address when you job starts and finishes (change to your email)
 #SBATCH --mail-user=rshad@stanford.edu
@@ -34,17 +34,18 @@ echo "Running in L_SCRATCH"
 
 # Name of the executable (cellranger count; channge parameters as per run case)
 
-cellranger count --id=129WT_Female \
+cellranger count --id=129WT_Male_combo \
                  --transcriptome=$GROUP_SCRATCH/rna_seq/aj_testfile/refdata-cellranger-mm10-3.0.0 \
-                 --fastqs=$GROUP_SCRATCH/rna_seq/Marfan_Mouse/mkfastq_dir/outs/fastq_path \
-                 --sample=129WT_Female \
+                 --fastqs=$GROUP_SCRATCH/rna_seq/Marfan_Mouse/12_16_19/mkfastq_dir/outs/fastq_path,$GROUP_SCRATCH/rna_seq/Marfan_Mouse/1_22_20/mkfastq_dir/outs/fastq_path\
+                 --sample=129WT_Male,129WT_M_2 \
                  --expect-cells=10000 \
                  
 #L_SCRATCH wil purge everything from memory as soon as job ends, this step copies everything back to GROUP_SCRATCH
 
 echo "Copying back to GROUP_SCRATCH"
 
-cp -r $L_SCRATCH/workdir/129WT_Female $GROUP_SCRATCH/Marfan_Mouse_output/129WT_Female
+mkdir $GROUP_SCRATCH/Marfan_Mouse_output/129WT_Male_combo
+cp -r $L_SCRATCH/workdir/129WT_Male_combo $GROUP_SCRATCH/Marfan_Mouse_output/129WT_Male_combo
 
 echo "Job copied, waiting 10s to terminate..."
 
