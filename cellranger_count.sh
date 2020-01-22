@@ -36,8 +36,8 @@ echo "Running in L_SCRATCH"
 
 cellranger count --id=129WT_Male_combo \
                  --transcriptome=$GROUP_SCRATCH/rna_seq/aj_testfile/refdata-cellranger-mm10-3.0.0 \
-                 --fastqs=$GROUP_SCRATCH/rna_seq/Marfan_Mouse/12_16_19/mkfastq_dir/outs/fastq_path,$GROUP_SCRATCH/rna_seq/Marfan_Mouse/1_22_20/mkfastq_dir/outs/fastq_path\
-                 --sample=129WT_Male,129WT_M_2 \
+                 --fastqs=$GROUP_SCRATCH/rna_seq/Marfan_Mouse/12_16_19/mkfastq_dir/outs/fastq_path \
+                 --sample=129WT_Male \
                  --expect-cells=10000 \
                  
 #L_SCRATCH wil purge everything from memory as soon as job ends, this step copies everything back to GROUP_SCRATCH
