@@ -18,6 +18,7 @@
 echo "Extracting tar files..."
 tar -xvf *.tar
 echo "Done"
+sleep 10
 
 echo "Creating working directory structure..."
 
@@ -61,3 +62,5 @@ sleep 10
 
 echo "Starting cellranger count so you don't have to..."
 ./startup_generator/master_run.sh
+
+sleep 10
