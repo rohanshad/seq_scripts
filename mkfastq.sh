@@ -2,7 +2,7 @@
 
 # Name of your job (keep this stuff as is)
 #SBATCH --job-name=mkfastq
-#SBATCH --partition=owners,willhies
+#SBATCH --partition=willhies,owners
 #SBATCH --mem=24G
 
 # Specify the name of the output file. The %j specifies the job ID (keep this as is)
@@ -16,7 +16,11 @@
 #SBATCH --mail-type=end
 
 echo "Extracting tar files..."
-tar -xvf *.tar
+
+for i in *.tar; do
+	tar -xvf $i
+done
+
 echo "Done"
 sleep 10
 
