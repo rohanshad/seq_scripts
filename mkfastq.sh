@@ -4,7 +4,7 @@
 #SBATCH --job-name=mkfastq
 #SBATCH --partition=willhies,owners
 #SBATCH --mem=24G
-#SBATCH --qos=high_p
+#SBATCH --qos=normal
 
 # Specify the name of the output file. The %j specifies the job ID (keep this as is)
 #SBATCH --output=log.%j
@@ -47,8 +47,9 @@ mv RTAComplete.txt rawdata/
 mv RTAConfiguration.xml rawdata/
 mv RTALogs/ rawdata/
 mv RunInfo.xml rawdata/
+mv RunParameters.xml runParameters.xml
 mv runParameters.xml rawdata/
-
+mv RTA3.cfg rawdata/
 
 # Read in data from samples.csv file to create directory structure
 echo "Reading samples.csv..."
@@ -89,5 +90,6 @@ sleep 10
 echo "Starting cellranger count so you don't have to..."
 bash startup_generator/master_run.sh
 
+edits here that wont get synced 
 sleep 10
 
