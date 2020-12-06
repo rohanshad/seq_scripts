@@ -7,7 +7,8 @@ run_command="sbatch"
 original_pwd=$(pwd)
 
 # Will find and run all scripts titled 'submit.sh', helps when submitting jobs in different directories at once
-script_list=$(ls */startup_generator/submit.sh)
+# Rember part is important to modify if you're looking to run things from subfolders!!!
+script_list=$(ls */submit.sh)
 
 # Loop through each script in the submission list
 for script in ${script_list}; do
