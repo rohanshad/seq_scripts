@@ -27,30 +27,29 @@ ulimit -u 10000
 #Saves current parent directory as variable
 path=$((pwd) | rev | cut -d'/' -f3- | rev)
 
-#Creates working directory within high speed L_SCRATCH + runs everything in it
+#Creates working directory within path runs everything in it
 
-mkdir $L_SCRATCH/workdir
-cd $L_SCRATCH/workdir
-
-
-echo "Running in L_SCRATCH"
+mkdir workdir
+cd workdir
 
 
-# Name of the executable (cellranger count; channge parameters as per run case)
+echo "Running in GROUP_SCRATCH"
+
+
+# Name of the executable (cellranger-atac count; channge parameters as per run case)
 
 cellranger-atac count --id=sample_name_here \
                  --reference=$GROUP_HOME/ref_genomes/refdata-cellranger-atac-mm10-1.2.0 \
                  --fastqs=$path/mkfastq_dir \
                  --sample=sample_name_here 
                  
-#L_SCRATCH wil purge everything from memory as soon as job ends, this step copies everything back to GROUP_SCRATCH
 
-echo "Copying back to GROUP_SCRATCH"
+echo "Copying into GROUP_SCRATCH output folder"
 
 #Eventually have 'project folder' auto populate with date
 
 mkdir $GROUP_SCRATCH/Marfan_Mouse_atac_output/
-cp -r $L_SCRATCH/workdir/sample_name_here $GROUP_SCRATCH/Marfan_Mouse_atac_output/
+cp -r workdir/sample_name_here $GROUP_SCRATCH/Marfan_Mouse_atac_output/
 
 echo "Job copied, waiting 10s to terminate..."
 
